@@ -1123,7 +1123,7 @@ SOURCE_TARBALLS =					\
 
 # Systems supported by Guix.
 SUPPORTED_SYSTEMS ?= x86_64-linux i686-linux armhf-linux aarch64-linux \
-  powerpc64le-linux riscv64-linux
+  powerpc64le-linux riscv64-linux loongarch64-linux
 
 # Guix binary tarballs.
 BINARY_TARBALLS =							\
