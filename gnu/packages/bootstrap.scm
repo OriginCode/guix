@@ -375,6 +375,7 @@ or false to signal an error."
     "ftp://alpha.gnu.org/gnu/guix/bootstrap"
     "http://www.fdn.fr/~lcourtes/software/guix/packages"
     "http://flashner.co.il/guix/bootstrap"
+    "https://file.loongfans.cn/guix/bootstrap/"
     "http://lilypond.org/janneke/guix/"))
 
 (define (bootstrap-guile-url-path system)
@@ -395,6 +396,8 @@ or false to signal an error."
                     "/20210106/guile-static-stripped-2.0.14-powerpc64le-linux-gnu.tar.xz")
                    ("riscv64-linux"
                     "/20210725/guile-3.0.2.tar.xz")
+                   ("loongarch64-linux"
+                    "/20260821/guile-static-stripped-3.0.11-loongarch64-linux-gnu.tar.xz")
                    (_
                     "/20131110/guile-2.0.9.tar.xz"))))
 
@@ -420,7 +423,9 @@ or false to signal an error."
     ("powerpc-linux"
      (base32 "1by2p7s27fbyjzfkcw8h65h4kkqh7d23kv4sgg5jppjn2qx7swq4"))
     ("riscv64-linux"
-     (base32 "12pqmhsbbp7hh9r1bjdl14l3a4q06plpz6dcks9dysb4czay8p9f"))))
+     (base32 "12pqmhsbbp7hh9r1bjdl14l3a4q06plpz6dcks9dysb4czay8p9f"))
+    ("loongarch64-linux"
+     (base32 "1lha1gx1i6y7s58sz3fkgrrl45pr4ab8xcyxc780bgs5n9kj1wn9"))))
 
 (define (bootstrap-guile-origin system)
   "Return an <origin> object for the Guile tarball of SYSTEM."
@@ -632,6 +637,8 @@ $out/bin/guile --version~%"
                                              "/20200923/static-binaries.tar.xz")
                                             ("riscv64-linux"
                                              "/20210725/static-binaries.tar.xz")
+                                            ("loongarch64-linux"
+                                             "/20260821/static-binaries-0-loongarch64-linux-gnu.tar.xz")
                                             (_
                                              "/20131110/static-binaries.tar.xz")))
                                      %bootstrap-base-urls))
@@ -666,7 +673,10 @@ $out/bin/guile --version~%"
                                 "0x0xjlpmyh6rkr51p00gp6pscgl6zjida1rsg8vk3rinyi6rrbkg"))
                               ("mips64el-linux"
                                (base32
-                                "072y4wyfsj1bs80r6vbybbafy8ya4vfy7qj25dklwk97m6g71753"))))))
+                                "072y4wyfsj1bs80r6vbybbafy8ya4vfy7qj25dklwk97m6g71753"))
+                              ("loongarch64-linux"
+                               (base32
+                                "1p3bs5sqi1xcab303kbj4bkzs0h8my7mbcbx6ymiv8y7phcnnin4"))))))
                         "fgrep"                    ; the program to test
                         "Bootstrap binaries of Coreutils, Awk, etc."
                         #:snippet
@@ -720,6 +730,8 @@ $out/bin/guile --version~%"
                                              "/20200923/binutils-2.35.1.tar.xz")
                                             ("riscv64-linux"
                                              "/20210725/binutils-2.34.tar.xz")
+                                            ("loongarch64-linux"
+                                             "/20260821/binutils-static-stripped-2.44-loongarch64-linux-gnu.tar.xz")
                                             (_
                                              "/20131110/binutils-2.23.2.tar.xz")))
                                      %bootstrap-base-urls))
@@ -743,6 +755,9 @@ $out/bin/guile --version~%"
                               ("riscv64-linux"
                                (base32
                                 "0n9qf4vbilfmh1lknhw000waakj4q6s50pnjazr5137skm976z5m"))
+                              ("loongarch64-linux"
+                               (base32
+                                "0dyda0v6agiiizmb1w9jl3vrwqqcgd1fcss98vsz9n4a3vv9jg4h"))
                               ("i586-gnu"
                                (base32
                                 "11kykv1kmqc5wln57rs4klaqa13hm952smkc57qcsyss21kfjprs"))
@@ -824,6 +839,8 @@ $out/bin/guile --version~%"
                                        "/20200923/glibc-2.32.tar.xz")
                                       ("riscv64-linux"
                                        "/20210725/glibc-2.31.tar.xz")
+                                      ("loongarch64-linux"
+                                       "/20260821/glibc-stripped-2.41-loongarch64-linux-gnu.tar.xz")
                                       (_
                                        "/20131110/glibc-2.18.tar.xz")))
                                %bootstrap-base-urls))
@@ -847,6 +864,9 @@ $out/bin/guile --version~%"
                         ("riscv64-linux"
                          (base32
                           "0d9x80vm7ca1pd2whcmpm1h14zxpb58kqajlxlwffzm04xfsjnxm"))
+                        ("loongarch64-linux"
+                         (base32
+                          "08sccdjajsamdb9s2rl8zh5466swkkp7zwwcb57j5kfiqn5nbh37"))
                         ("i586-gnu"
                          (base32
                           "0x2x6w611k6v9qdabacawamw2475p04hm3s0q95xcg063wjq4ig2"))
@@ -942,6 +962,10 @@ exec ~a/bin/~a -B~a/lib \
                                         "/20200923/gcc-5.5.0.tar.xz")
                                        ("riscv64-linux"
                                         "/20210725/gcc-7.5.0.tar.xz")
+                                       ("riscv64-linux"
+                                        "/20210725/gcc-7.5.0.tar.xz")
+                                       ("loongarch64-linux"
+                                        "/20260821/gcc-stripped-14.3.0-loongarch64-linux-gnu.tar.xz")
                                        (_
                                         "/20131110/gcc-4.8.2.tar.xz")))
                                 %bootstrap-base-urls))
@@ -965,6 +989,9 @@ exec ~a/bin/~a -B~a/lib \
                          ("riscv64-linux"
                           (base32
                            "1k4mbnb54wj2q37fgshf5dfixixqnhn002vhzvi9pnb57xb9v14d"))
+                         ("loongarch64-linux"
+                          (base32
+                           "0ws4jyfk9nc39q0kdflhbg1wsmimp4d34bnvq2xq8a6i69vr1xkk"))
                          ("i586-gnu"
                           (base32
                            "1j2zc58wzil71a34h7c70sd68dmqvcscrw3rmn2whq79vd70zvv5"))
